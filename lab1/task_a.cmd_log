@@ -1,0 +1,5 @@
+xst -intstyle ise -ifn "E:/Github/digital-design/lab1/task_a.xst" -ofn "E:/Github/digital-design/lab1/task_a.syr" 
+ngdbuild -intstyle ise -dd _ngo -nt timestamp -i -p xc6slx9-ftg256-3 task_a.ngc task_a.ngd  
+map -intstyle ise -p xc6slx9-ftg256-3 -w -logic_opt off -ol high -t 1 -xt 0 -register_duplication off -r 4 -global_opt off -mt off -ir off -pr off -lc off -power off -o task_a_map.ncd task_a.ngd task_a.pcf 
+par -w -intstyle ise -ol high -mt off task_a_map.ncd task_a.ncd task_a.pcf 
+trce -intstyle ise -v 3 -s 3 -n 3 -fastpaths -xml task_a.twx task_a.ncd -o task_a.twr task_a.pcf 

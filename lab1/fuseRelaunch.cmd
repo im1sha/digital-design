@@ -1,0 +1,1 @@
+-intstyle "ise" -incremental -lib "secureip" -o "E:/Github/digital-design/lab1/task_a_isim_beh.exe" -prj "E:/Github/digital-design/lab1/task_a_beh.prj" "work.task_a" 

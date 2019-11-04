@@ -12,6 +12,8 @@ entity FAx2 is
            c_out   : out STD_LOGIC);
 end FAx2;
 
+
+
 architecture Structural of FAx2 is
 component FullAdder
       Port ( 
@@ -28,6 +30,8 @@ begin
     U2: FullAdder port map (a(1), b(1), c0, s(1), c_out);	 
 end Structural;
 
+
+
 architecture Behavioral of FAx2 is
 signal s0, c0: STD_LOGIC;
 
@@ -39,5 +43,7 @@ begin
    
    s(1) <= a(1) xor b(1) xor c0;
    c_out <= (a(1) and b(1)) or ((a(1) xor b(1)) and c0);
+       
 end Behavioral;
+
 

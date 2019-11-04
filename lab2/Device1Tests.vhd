@@ -42,25 +42,25 @@ BEGIN
 
    x_process : process
    begin
-		X <= '0';
+		x <= '0';
 		wait for clock_period*x_clock_multiplier/2;
-		X <= '1';
+		x <= '1';
 		wait for clock_period*x_clock_multiplier/2;
    end process;
 
    y_process : process
    begin
-		Y <= '0';
+		y <= '0';
 		wait for clock_period*y_clock_multiplier/2;
-		Y <= '1';
+		y <= '1';
 		wait for clock_period*y_clock_multiplier/2;
    end process;
 
    z_process : process
    begin
-		Z <= '0';
+		z <= '0';
 		wait for clock_period*z_clock_multiplier/2;
-		Z <= '1';
+		z <= '1';
 		wait for clock_period*z_clock_multiplier/2;
    end process;
 	

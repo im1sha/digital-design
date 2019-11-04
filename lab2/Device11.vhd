@@ -9,6 +9,12 @@ entity Device11 is
            g : out  STD_LOGIC);
 end Device11;
 
+architecture Behavioral of Device11 is
+begin	
+   f <= (x and y) or (y and z);
+   g <= (not x and not y) or (not x and z);
+end Behavioral;
+
 architecture Structural of Device11 is
 
 component Inv
@@ -55,8 +61,4 @@ begin
    U8: Or2 port map (not_x_and_not_y, not_x_and_z, g);
 end Structural;
 
-architecture Behavioral of Device11 is
-begin	
-   f <= (x and y) or (y and z);
-   g <= (not x and not y) or (not x and z);
-end Behavioral;
+

@@ -9,6 +9,13 @@ entity Device7 is
            g : out  STD_LOGIC);
 end Device7;
 
+
+architecture Behavioral of Device7 is
+begin
+   g <= (w and x and y) or (y and z);
+end Behavioral;
+
+
 architecture Structural of Device7 is
 
 component Or2
@@ -39,7 +46,4 @@ begin
    U3: Or2 port map (wxy, yz, g);
 end Structural;
 
-architecture Behavioral of Device7 is
-begin
-   g <= (w and x and y) or (y and z);
-end Behavioral;
+

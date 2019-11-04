@@ -13,20 +13,20 @@ architecture Structural of Device7 is
 
 component Or2
    Port ( a : in  STD_LOGIC;
-	       b : in  STD_LOGIC;
+	      b : in  STD_LOGIC;
           z : out  STD_LOGIC);
 end component;
 
 component And2
    Port ( a : in STD_LOGIC;
-	       b : in STD_LOGIC;
+	      b : in STD_LOGIC;
           z : out  STD_LOGIC);
 end component;
 
 component And3
    Port ( a : in STD_LOGIC;
-	       b : in STD_LOGIC;
-			 c : in STD_LOGIC;
+	      b : in STD_LOGIC;
+		  c : in STD_LOGIC;
           z : out  STD_LOGIC);
 end component;
 
@@ -36,7 +36,7 @@ signal wxy,
 begin
    U1: And3 port map (w, x, y, wxy);
    U2: And2 port map (y, z, yz);	
-	U3: Or2 port map (wxy, yz, g);
+   U3: Or2 port map (wxy, yz, g);
 end Structural;
 
 architecture Behavioral of Device7 is

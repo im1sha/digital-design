@@ -23,10 +23,10 @@ end Behavioral;
 architecture Structural of RsLatch is
    signal to_s, to_r: STD_LOGIC;
 begin
-   RS1: NOR2 port map (I0 => to_s, I1 => S, O => to_r);
-   RS2: BUF port map (I => to_r, O => nq);
-   RS3: NOR2 port map (I0 => to_r, I1 => R, O => to_s);
-   RS4: BUF port map (I => to_s, O => Q);
+   U1: NOR2 port map (I0 => to_s, I1 => S, O => to_r);
+   U2: BUF port map (I => to_r, O => nq);
+   U3: NOR2 port map (I0 => to_r, I1 => R, O => to_s);
+   U4: BUF port map (I => to_s, O => Q);
 end Structural;
 
 architecture Delayed of RsLatch is

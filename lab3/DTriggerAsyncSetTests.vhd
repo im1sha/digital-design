@@ -1,37 +1,37 @@
 LIBRARY ieee;
 USE ieee.std_logic_1164.ALL;
  
-ENTITY DTriggerAsyncResetTests IS
-END DTriggerAsyncResetTests;
+ENTITY DTriggerAsyncSetTests IS
+END DTriggerAsyncSetTests;
  
-ARCHITECTURE Behavioral OF DTriggerAsyncResetTests IS 
+ARCHITECTURE Behavioral OF DTriggerAsyncSetTests IS 
 
-    COMPONENT DTriggerAsyncReset
+    COMPONENT DTriggerAsyncSet
     PORT(
          D : IN  std_logic;
-         R : IN  std_logic;
          C : IN  std_logic;
+         S : IN  std_logic;
          Q : OUT  std_logic
         );
     END COMPONENT;
-
+    
    --Inputs
    signal D : std_logic := '0';
-   signal R : std_logic := '0';
    signal C : std_logic := '0';
+   signal S : std_logic := '0';
 
  	--Outputs
    signal Q : std_logic;
  
    constant clock_period : time := 10 ns;
-   constant r_period : time := clock_period/2 + 2 ns;
-   constant d_period : time := r_period/2;
+   constant s_period : time := clock_period/2 + 2 ns;
+   constant d_period : time := s_period/2;
 BEGIN
 
-   uut: DTriggerAsyncReset PORT MAP (
+   uut: DTriggerAsyncSet PORT MAP (
           D => D,
-          R => R,
           C => C,
+          S => S,
           Q => Q
         );
 
@@ -51,11 +51,11 @@ BEGIN
       wait for d_period/2;
    end process;
    
-   r_process :process
+   s_process :process
    begin
-      R <= '0';
-      wait for r_period/2;
-      R <= '1';
-      wait for r_period/2;
+      S <= '0';
+      wait for s_period/2;
+      S <= '1';
+      wait for s_period/2;
    end process;
 END;

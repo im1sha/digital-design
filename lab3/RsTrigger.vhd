@@ -11,21 +11,23 @@ entity RsTrigger is
 end RsTrigger;
 
 architecture Behavioral of RsTrigger is
-   signal to_Q, to_nQ, to_s, to_r: STD_LOGIC;
+   signal q_s, nq_s: STD_LOGIC;
    
 begin
    Main : process(S, R, C)
    begin
-      if rising_edge(C) then
-      
-         to_r <= to_s nand (not S);
-         to_nQ <= to_r;
-         to_s <= to_r nand (not R);
-         to_Q <= to_s;
-         
-      end if;
+      if rising_edge(C) and ((S or R) ='1') 
+      then
+        if S /= q_s then 
+           q_s <= S;
+        end if;
+        if R /= nq_s then
+           nq_s <= R;
+        end if;               
+      end if;   
    end process;
-   
-   Q <=  to_Q;
-   nQ <=  to_nQ;
+
+   Q <=  q_s;
+   nQ <= nq_s;
+    
 end Behavioral;

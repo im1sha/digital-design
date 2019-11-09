@@ -23,9 +23,13 @@ ARCHITECTURE Behavioral OF DTriggerAsyncResetTests IS
  	--Outputs
    signal Q : std_logic;
  
-   constant clock_period : time := 10 ns;
-   constant r_period : time := clock_period/2 + 2 ns;
-   constant d_period : time := r_period/2;
+   signal assert_result : std_logic;
+   signal saved_value : std_logic;
+
+ 
+   constant clock_period : time := 5 ns;
+   constant r_period : time := 9 ns;
+   constant d_period : time := 7 ns;
 BEGIN
 
    uut: DTriggerAsyncReset PORT MAP (
@@ -58,4 +62,14 @@ BEGIN
       R <= '1';
       wait for r_period/2;
    end process;
-END;
+   
+   assert_process :process(D, R, C, Q)
+   begin  
+        if R = '1' then     
+           saved_value <= '0';
+        elsif rising_edge(C) then 
+           saved_value <= D;
+        end if;   
+        assert_result <= saved_value xor Q;           
+   end process;
+ END;

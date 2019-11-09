@@ -21,6 +21,10 @@ ARCHITECTURE Behavioral OF DLatchAsyncResetTests IS
  	--Outputs
    signal Q : std_logic;
  
+   
+   signal assert_signal : std_logic;
+
+ 
    constant clock_period : time := 10 ns;
    constant d_multiplier : integer := 2 ** 0;
    constant r_multiplier : integer := 2 ** 1;
@@ -47,4 +51,14 @@ BEGIN
 		R <= '1';
 		wait for clock_period*r_multiplier/2;
    end process;
+   
+   assert_process: process(R, D, Q)
+   begin
+       if (R = '1') then
+            assert_signal <= '0' xor Q;
+       else 
+            assert_signal <= D xor Q;
+       end if;
+   end process;
+   
 END;

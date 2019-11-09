@@ -25,8 +25,8 @@ ARCHITECTURE Behavioral OF DELatchTests IS
    signal Q_assert, nQ_assert, result_assert : std_logic;
  
    constant clock_period : time := 10 ns;
-   constant D_multiplier : integer := 2 ** 0;
-   constant E_multiplier : integer := 2 ** 1;
+   constant E_multiplier : integer := 2 ** 0;
+   constant D_multiplier : integer := 2 ** 1;
    
 BEGIN
 	DELatch_b: entity work.DELatch(Behavioral) PORT MAP (

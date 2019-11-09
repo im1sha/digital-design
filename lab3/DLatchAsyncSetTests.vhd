@@ -20,6 +20,9 @@ ARCHITECTURE Behavioral OF DLatchAsyncSetTests IS
 
  	--Outputs
    signal Q : std_logic;
+   
+   
+   signal assert_signal : std_logic;
  
    constant clock_period : time := 10 ns;
    constant d_multiplier : integer := 2 ** 0;
@@ -46,6 +49,15 @@ BEGIN
 		wait for clock_period*s_multiplier/2;
 		S <= '1';
 		wait for clock_period*s_multiplier/2;
+   end process;
+   
+   assert_process: process(S, D, Q)
+   begin
+       if (S = '1') then
+            assert_signal <= '1' xor Q;
+       else 
+            assert_signal <= D xor Q;
+       end if;
    end process;
    
 END;

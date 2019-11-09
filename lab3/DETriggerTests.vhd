@@ -19,13 +19,17 @@ ARCHITECTURE Behavioral OF DETriggerTests IS
    signal D : std_logic := '0';
    signal E : std_logic := '0';
    signal C : std_logic := '0';
+   
+   
+   signal assert_result : std_logic;
+   signal saved_value : std_logic;
 
  	--Outputs
    signal Q : std_logic;
 
    constant clock_period : time := 10 ns;
-   constant e_period : time := clock_period/2 + 2 ns;
-   constant d_period : time := e_period/2;
+   constant e_period : time := 7 ns;
+   constant d_period : time := 9 ns;
 BEGIN
 
    uut: DETrigger PORT MAP (
@@ -35,7 +39,6 @@ BEGIN
           Q => Q
         );
 
-   -- Clock process definitions
    clock_process :process
    begin
 		C <= '0';
@@ -58,5 +61,16 @@ BEGIN
       wait for E_period/2;
       E <= '1';
       wait for E_period/2;
+   end process;
+   
+   
+   assert_process :process(D,E,C,Q)
+   begin
+        if rising_edge(C) and (E = '1') then     
+           saved_value <= D;
+           assert_result <= Q xor D; 
+        else     
+           assert_result <= saved_value xor Q;        
+        end if;        
    end process;
 END;

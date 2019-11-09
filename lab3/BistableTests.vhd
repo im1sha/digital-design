@@ -15,12 +15,12 @@ ARCHITECTURE Behavioral OF BistableTests IS
  	--Outputs
    signal Q : std_logic;
    signal nQ : std_logic;
-   signal error : std_logic;
+   signal assert_signal : std_logic;
 BEGIN
    uut: Bistable PORT MAP (
           Q => Q,
           nQ => nQ
         );
 
-   error <= Q and nQ;
+   assert_signal <= not (Q xor nQ);
 END;

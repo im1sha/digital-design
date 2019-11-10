@@ -5,7 +5,7 @@ use ieee.std_logic_unsigned.ALL;
 ENTITY SyncRegisterTests IS
 END SyncRegisterTests;
  
-ARCHITECTURE behavior OF SyncRegisterTests IS 
+ARCHITECTURE Behavioral OF SyncRegisterTests IS 
     -- Component Declaration for the Unit Under Test (UUT)
     COMPONENT SyncRegister
     PORT(

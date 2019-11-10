@@ -5,7 +5,7 @@ use ieee.std_logic_unsigned.ALL;
 ENTITY AsyncRegisterTests IS
 END AsyncRegisterTests;
  
-ARCHITECTURE behavior OF AsyncRegisterTests IS 
+ARCHITECTURE Behavioral OF AsyncRegisterTests IS 
     -- Component Declaration for the Unit Under Test (UUT)
     COMPONENT AsyncRegister
     PORT(

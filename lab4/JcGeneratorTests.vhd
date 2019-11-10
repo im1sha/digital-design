@@ -27,7 +27,7 @@ ARCHITECTURE Behavioral OF JcGeneratorTests IS
 
  	--Outputs
    signal Pout : std_logic_vector(0 to N-1);
-
+   
    -- Clock period definitions
    constant CLK_period : time := 10 ns;
    
@@ -40,7 +40,6 @@ BEGIN
           Pout => Pout
         );
 
-   RST <= '0';
    
    LS_process :process
    begin
@@ -58,4 +57,5 @@ BEGIN
 		CLK <= '1';
 		wait for CLK_period/2;
    end process;
+   
 END;

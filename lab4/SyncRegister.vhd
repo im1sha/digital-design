@@ -15,7 +15,10 @@ end SyncRegister;
 architecture Structural of SyncRegister is
 begin
    U1: for i in 0 to N-1 generate
-      U2: FDE port map ( D => Din(i), CE => CE, C => C, Q => Dout(i));
+      U2: FDE port map ( D => Din(i), 
+                         CE => CE, 
+                         C => C, 
+                         Q => Dout(i));
    end generate;
 end Structural;
 
